@@ -1,6 +1,12 @@
 extends layout.pug
 
 block content
+  if messages.length > 0
+  div
+    p The following errors were found:
+    ul
+      each message in messages
+        li= message
   form(action="/create", method="post")
     input(type="hidden", name="_csrf", value=csrfToken)
     label(for="firstName") firstName:
